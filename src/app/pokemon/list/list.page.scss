@@ -1,0 +1,6 @@
+.hover\:elevate {
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    transform: translateY(-0.1rem);
+  }
+}
