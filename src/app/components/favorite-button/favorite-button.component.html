@@ -1,0 +1,6 @@
+<ion-button (click)="addFavorite()" *ngIf="!isFavorite">
+  <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
+</ion-button>
+<ion-button (click)="removeFavorite()" *ngIf="isFavorite">
+  <ion-icon slot="icon-only" name="heart" color="danger"></ion-icon>
+</ion-button>

@@ -8,14 +8,21 @@ const routes: Routes = [
       import('./pokemon/list/list.module').then((m) => m.ListPageModule),
   },
   {
-    path: 'folder/:id',
-    loadChildren: () =>
-      import('./folder/folder.module').then((m) => m.FolderPageModule),
-  },
-  {
     path: 'detail/:id',
     loadChildren: () =>
       import('./pokemon/detail/detail.module').then((m) => m.DetailPageModule),
+  },
+  {
+    path: 'favorite',
+    loadChildren: () =>
+      import('./pokemon/favorite/favorite.module').then(
+        (m) => m.FavoritePageModule,
+      ),
+  },
+  {
+    path: 'team',
+    loadChildren: () =>
+      import('./pokemon/team/team.module').then((m) => m.TeamPageModule),
   },
 ]
 

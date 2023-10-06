@@ -1,0 +1,6 @@
+<ion-button (click)="addToTeam()" *ngIf="!inTeam">
+  <ion-icon slot="icon-only" name="person-add-outline"></ion-icon>
+</ion-button>
+<ion-button (click)="addToTeam()" *ngIf="inTeam">
+  <ion-icon slot="icon-only" name="person-remove-outline"></ion-icon>
+</ion-button>

@@ -2,7 +2,7 @@
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
-        <ion-list id="inbox-list">
+        <ion-list id="menu-list">
           <ion-list-header class="ion-margin-bottom">Pokédex</ion-list-header>
 
           <ion-menu-toggle
@@ -15,6 +15,7 @@
               lines="none"
               detail="false"
               routerLinkActive="selected"
+              [routerLinkActiveOptions]="{ exact: true }"
             >
               <ion-icon
                 aria-hidden="true"

@@ -7,6 +7,9 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular'
 import { AppComponent } from './app.component'
 import { AppRoutingModule } from './app-routing.module'
 
+import { ComponentsModule } from 'src/app/components/components.module'
+import { PokemonListComponent } from 'src/app/components/pokemon-list/pokemon-list.component'
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -14,7 +17,9 @@ import { AppRoutingModule } from './app-routing.module'
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
+    ComponentsModule,
   ],
+  exports: [PokemonListComponent],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

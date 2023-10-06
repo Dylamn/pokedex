@@ -10,8 +10,9 @@ export type PokeAPIListResponse = {
   results: RawPokemonListItem[]
 }
 
-export interface PokemonListItem extends RawPokemonListItem {
+export type PokemonListItem = {
   id: number
+  name: string
   spriteUrl: string
 }
 

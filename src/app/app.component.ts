@@ -1,14 +1,17 @@
-import { Component } from '@angular/core'
+import { Component, inject } from '@angular/core'
+import { ActivatedRoute } from '@angular/router'
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+  private route = inject(ActivatedRoute)
+
   public appPages = [
-    { title: 'List', url: '/list', icon: 'albums' },
-    { title: 'Favorites', url: '/folder/favorites', icon: 'heart' },
-    { title: 'Team', url: '/folder/team', icon: 'people' },
+    { title: 'List', url: '/', icon: 'albums' },
+    { title: 'Favorites', url: '/favorite', icon: 'heart' },
+    { title: 'Team', url: '/team', icon: 'people' },
   ]
 
   public labels = ['Shiny']

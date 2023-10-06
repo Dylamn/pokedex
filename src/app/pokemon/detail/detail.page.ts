@@ -20,7 +20,7 @@ export class DetailPage implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     const pathId = this.activatedRoute.snapshot.paramMap.get('id')
     const parsedId = parseInt(pathId || '', 10)
 
@@ -30,26 +30,12 @@ export class DetailPage implements OnInit {
 
     this.id = parsedId
 
-    this.pokemonService.show(this.id).subscribe((data) => {
+    this.pokemonService.show(this.id).subscribe(async (data) => {
       this.pokemon = data as Pokemon
-      this.pokemonService.isFavorite(this.pokemon)
+      console.log(await this.pokemonService.isFavorite(this.pokemon))
+      console.log(this.pokemon)
+
+      this.isFavorite = await this.pokemonService.isFavorite(this.pokemon)
     })
-  }
-
-  public async addFavorite() {
-    if (!this.pokemon) {
-      return
-    }
-    console.log(this.pokemon)
-
-    await this.pokemonService.addFavorite(this.pokemon)
-  }
-
-  public async removeFavorite() {
-    if (!this.pokemon) {
-      return
-    }
-
-    await this.pokemonService.removeFavorite(this.pokemon)
   }
 }

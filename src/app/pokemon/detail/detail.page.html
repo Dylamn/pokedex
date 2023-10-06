@@ -4,12 +4,8 @@
       <ion-back-button icon="arrow-back"></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button (click)="addFavorite()" *ngIf="!isFavorite">
-        <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
-      </ion-button>
-      <ion-button (click)="removeFavorite()" *ngIf="isFavorite">
-        <ion-icon slot="icon-only" name="heart" color="danger"></ion-icon>
-      </ion-button>
+      <app-team-add></app-team-add>
+      <app-favorite-button [pokemon]="pokemon!"></app-favorite-button>
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>{{ pokemon?.name | titlecase }}</ion-title>

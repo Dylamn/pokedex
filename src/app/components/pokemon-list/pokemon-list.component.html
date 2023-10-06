@@ -1,0 +1,19 @@
+<ion-grid>
+  <ion-row>
+    <ion-col size="6" *ngFor="let pokemon of pokemons">
+      <ion-card
+        [routerLink]="['/detail', pokemon.id]"
+        class="ion-text-center cursor-pointer ion-activatable ripple-parent hover:elevate"
+      >
+        <img [alt]="pokemon.name" [src]="pokemon.spriteUrl" />
+        <ion-card-header>
+          <ion-card-title>{{ pokemon.name }}</ion-card-title>
+        </ion-card-header>
+        <ion-ripple-effect></ion-ripple-effect>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-grid>

@@ -23,7 +23,7 @@ export class ListPage implements OnInit {
     this.loadPokemons(this.page, this.size)
   }
 
-  async onIonInfinite(event: Event) {
+  public onIonInfinite = async (event: Event) => {
     await this.loadPokemons(++this.page, this.size)
     setTimeout(() => {
       ;(event as InfiniteScrollCustomEvent).target.complete()

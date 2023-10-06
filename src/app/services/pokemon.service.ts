@@ -33,21 +33,21 @@ export class PokemonService {
     return this.spriteUrl.replace('{0}', id.toString())
   }
 
-  public async getFavorites(): Promise<Set<Pokemon>> {
+  public async getFavorites(): Promise<Array<Pokemon>> {
     const { value: rawFavorites } = await Preferences.get({ key: 'favorites' })
 
     if (!rawFavorites) {
-      return new Set()
+      return []
     }
     const favorites = JSON.parse(rawFavorites) as Array<Pokemon>
 
-    return new Set(favorites)
+    return favorites
   }
 
   public async addFavorite(pokemon: Pokemon) {
     const favorites = await this.getFavorites()
 
-    favorites.add(pokemon)
+    favorites.push(pokemon)
 
     await Preferences.set({
       key: 'favorites',
@@ -58,17 +58,19 @@ export class PokemonService {
   public async removeFavorite(pokemon: Pokemon) {
     const favorites = await this.getFavorites()
 
-    favorites.delete(pokemon)
+    const updatedFavorites = Array.from(favorites).filter(
+      (favorite) => favorite.id !== pokemon.id,
+    )
 
     await Preferences.set({
       key: 'favorites',
-      value: JSON.stringify(Array.from(favorites)),
+      value: JSON.stringify(updatedFavorites),
     })
   }
 
   public async isFavorite(pokemon: Pokemon) {
     const favorites = await this.getFavorites()
 
-    return favorites.has(pokemon)
+    return Array.from(favorites).some((favorite) => favorite.id === pokemon.id)
   }
 }
